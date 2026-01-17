@@ -1,0 +1,162 @@
+[gd_scene load_steps=8 format=3 uid="uid://brfl2a5vcnwr6"]
+
+[ext_resource type="Script" uid="uid://g10alqpcvr7j" path="res://Scripts/UI/Alloy/alloy_creator.gd" id="1_lhb2d"]
+[ext_resource type="PackedScene" uid="uid://buwxk844bodqw" path="res://Scenes/UI/moving_texture.tscn" id="2_qf3i1"]
+[ext_resource type="FontFile" uid="uid://dllb2tfvteo8k" path="res://Assets/Fonts/Samples/Unicode/Unifontexmono-lxY45.ttf" id="3_kx5i2"]
+[ext_resource type="Script" uid="uid://bnxu8wp84qvmn" path="res://Scripts/UI/inventory_container.gd" id="4_xn4d3"]
+[ext_resource type="PackedScene" uid="uid://bcp1wdadt8xag" path="res://Scenes/Smeltery/item_input.tscn" id="6_kc8jx"]
+[ext_resource type="PackedScene" uid="uid://cm47n2ygataib" path="res://Scenes/UI/transition.tscn" id="10_0webp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kpbys"]
+font = ExtResource("3_kx5i2")
+font_size = 32
+
+[node name="Smeltery" type="Node2D"]
+
+[node name="AlloyCreator" type="Node" parent="."]
+script = ExtResource("1_lhb2d")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MovingTexture" parent="CanvasLayer" instance=ExtResource("2_qf3i1")]
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+text = "Your ores"
+label_settings = SubResource("LabelSettings_kpbys")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer/PanelContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="InventoryContainer" type="HFlowContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer/PanelContainer2/MarginContainer/PanelContainer"]
+layout_mode = 2
+alignment = 1
+script = ExtResource("4_xn4d3")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2/PanelContainer"]
+layout_mode = 2
+text = "Create your alloy!"
+label_settings = SubResource("LabelSettings_kpbys")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2/PanelContainer2/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Result" parent="CanvasLayer/HBoxContainer/VBoxContainer2/PanelContainer2/MarginContainer/VBoxContainer" instance=ExtResource("6_kc8jx")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2/PanelContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "-------"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2/PanelContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="In1" parent="CanvasLayer/HBoxContainer/VBoxContainer2/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("6_kc8jx")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "+"
+horizontal_alignment = 1
+
+[node name="In2" parent="CanvasLayer/HBoxContainer/VBoxContainer2/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("6_kc8jx")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2/PanelContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "+"
+horizontal_alignment = 1
+
+[node name="In3" parent="CanvasLayer/HBoxContainer/VBoxContainer2/PanelContainer2/MarginContainer/VBoxContainer" instance=ExtResource("6_kc8jx")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer3/PanelContainer"]
+layout_mode = 2
+text = "Your alloys"
+label_settings = SubResource("LabelSettings_kpbys")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer3/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer3/PanelContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="InventoryContainer" type="HFlowContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer3/PanelContainer2/MarginContainer/PanelContainer"]
+layout_mode = 2
+alignment = 1
+script = ExtResource("4_xn4d3")
+for_ores = false
+
+[node name="Transition" parent="CanvasLayer" node_paths=PackedStringArray("canvas_layer") instance=ExtResource("10_0webp")]
+visible = false
+canvas_layer = NodePath("..")
+
+[connection signal="item_removed" from="CanvasLayer/HBoxContainer/VBoxContainer2/PanelContainer2/MarginContainer/VBoxContainer/Result" to="AlloyCreator" method="_on_result_item_removed"]

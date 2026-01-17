@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="OreGenerationSettings" load_steps=14 format=3 uid="uid://b3yty2eb2bewd"]
+
+[ext_resource type="Script" uid="uid://c3d4hcxyeaaw0" path="res://Scripts/Generation/Resuources/tile_generation_settings.gd" id="1_oj511"]
+[ext_resource type="Script" uid="uid://b67avnkl15xcb" path="res://Scripts/Generation/Resuources/Ore/ore_drop_table.gd" id="1_ujffn"]
+[ext_resource type="Script" uid="uid://bhikixwx8pati" path="res://Scripts/Generation/Resuources/Ore/ore_generation_settings.gd" id="2_51jn5"]
+[ext_resource type="Script" uid="uid://boj23doieaxsi" path="res://Scripts/Items/Resources/item.gd" id="2_oj511"]
+[ext_resource type="Resource" uid="uid://dqbrviiybquh5" path="res://Resources/Items/Ores/copper_ore.tres" id="3_51jn5"]
+[ext_resource type="Resource" uid="uid://qxpoadwsfou3" path="res://Resources/Items/Ores/iron_ore.tres" id="4_6qblj"]
+[ext_resource type="Resource" uid="uid://bmrakup0n3v8f" path="res://Resources/Items/Ores/lead_ore.tres" id="5_boe7x"]
+[ext_resource type="Resource" uid="uid://cu7h2348t7w41" path="res://Resources/Items/Ores/gold_ore.tres" id="6_icydu"]
+[ext_resource type="Resource" uid="uid://bisea8clhcj3n" path="res://Resources/Items/Ores/hydrotite_ore.tres" id="7_d2i48"]
+[ext_resource type="Script" uid="uid://obcvev52qwqo" path="res://Scripts/Generation/Resuources/Ore/ore_settings.gd" id="10_6qblj"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_d1ilt"]
+noise_type = 3
+frequency = 0.1997
+fractal_lacunarity = 2.84
+fractal_gain = 0.535
+
+[sub_resource type="Resource" id="Resource_boe7x"]
+script = ExtResource("1_ujffn")
+values = Dictionary[ExtResource("2_oj511"), float]({
+ExtResource("6_icydu"): 0.05,
+ExtResource("3_51jn5"): 0.25,
+ExtResource("5_boe7x"): 0.25,
+ExtResource("7_d2i48"): 0.3,
+ExtResource("4_6qblj"): 0.15
+})
+metadata/_custom_type_script = "uid://b67avnkl15xcb"
+
+[sub_resource type="Resource" id="Resource_icydu"]
+script = ExtResource("10_6qblj")
+hardness = 3
+health = 2
+containing_ores = SubResource("Resource_boe7x")
+metadata/_custom_type_script = "uid://obcvev52qwqo"
+
+[resource]
+script = ExtResource("2_51jn5")
+settings = SubResource("Resource_icydu")
+placeable_tiles = PackedVector2Array(1, 0)
+name = "Hydrotite ore"
+atlas_pos = Vector2(4, 1)
+min_threshold = 0.75
+noise = SubResource("FastNoiseLite_d1ilt")
+min_value = -0.578
+max_value = 0.588
+metadata/_custom_type_script = "uid://c3d4hcxyeaaw0"

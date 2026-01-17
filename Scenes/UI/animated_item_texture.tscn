@@ -1,0 +1,74 @@
+[gd_scene load_steps=12 format=3 uid="uid://b2wbmhb6t7k6"]
+
+[ext_resource type="Script" uid="uid://sokbv1xm1fu2" path="res://Scripts/UI/animated_item_texture_wraper.gd" id="1_htid6"]
+[ext_resource type="Shader" uid="uid://c5jd3kpjjvppm" path="res://Shaders/alloy_gradient.gdshader" id="2_c7v0t"]
+[ext_resource type="Texture2D" uid="uid://dv0pttmrx8c3p" path="res://Assets/Sprites/Items/Items MinerWorld-Ores.png" id="3_2gcxe"]
+[ext_resource type="Script" uid="uid://dw6ybrmghjoee" path="res://Scripts/UI/animated_item.gd" id="4_k1aym"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ytgoh"]
+bg_color = Color(1, 1, 1, 0.3137255)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c2p4k"]
+shader = ExtResource("2_c7v0t")
+shader_parameter/use_gradient = false
+shader_parameter/amount = 16.0
+shader_parameter/offset = 0.5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glv15"]
+atlas = ExtResource("3_2gcxe")
+region = Rect2(336, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0a7u"]
+atlas = ExtResource("3_2gcxe")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejlen"]
+atlas = ExtResource("3_2gcxe")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7xaf"]
+atlas = ExtResource("3_2gcxe")
+region = Rect2(240, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v6feu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0a7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejlen")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7xaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glv15")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="AnimatedItemTexture" type="PanelContainer"]
+offset_right = 30.0
+offset_bottom = 29.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ytgoh")
+script = ExtResource("1_htid6")
+
+[node name="AnimatedTex" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_c2p4k")
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_glv15")
+expand_mode = 2
+stretch_mode = 5
+script = ExtResource("4_k1aym")
+sprite_frames = SubResource("SpriteFrames_v6feu")
+metadata/_custom_type_script = "uid://kses1fax7mw"

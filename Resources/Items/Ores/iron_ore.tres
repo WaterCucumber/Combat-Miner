@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Ore" load_steps=5 format=3 uid="uid://qxpoadwsfou3"]
+
+[ext_resource type="Texture2D" uid="uid://dv0pttmrx8c3p" path="res://Assets/Sprites/Items/Items MinerWorld-Ores.png" id="1_5rhlc"]
+[ext_resource type="Script" uid="uid://dhksy0pt6560n" path="res://Scripts/Items/Resources/ore.gd" id="2_5rhlc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ftvy"]
+atlas = ExtResource("1_5rhlc")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hie2s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ftvy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_5rhlc")
+color = Color(0.7607843, 0.7647059, 0.78039217, 1)
+anim = SubResource("SpriteFrames_hie2s")
+name = "Iron ore"
+metadata/_custom_type_script = "uid://boj23doieaxsi"

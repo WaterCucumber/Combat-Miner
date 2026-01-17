@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="TileGenerationSettings" load_steps=3 format=3 uid="uid://jd1heltr885f"]
+
+[ext_resource type="FastNoiseLite" uid="uid://bv7mk45agau41" path="res://Resources/WorldMapGeneration/noise.tres" id="1_6qu7f"]
+[ext_resource type="Script" uid="uid://c3d4hcxyeaaw0" path="res://Scripts/Generation/Resuources/tile_generation_settings.gd" id="2_3i8r2"]
+
+[resource]
+script = ExtResource("2_3i8r2")
+name = "Ore Zone"
+atlas_pos = Vector2(0, 3)
+min_threshold = 0.74
+max_threshold = 0.9
+noise = ExtResource("1_6qu7f")
+min_value = -0.426
+max_value = 0.338
+metadata/_custom_type_script = "uid://c3d4hcxyeaaw0"

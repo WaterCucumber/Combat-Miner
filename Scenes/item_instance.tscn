@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://d0pjrnhgdukwg"]
+
+[ext_resource type="Texture2D" uid="uid://dv0pttmrx8c3p" path="res://Assets/Sprites/Items/Items MinerWorld-Ores.png" id="1_76mu4"]
+[ext_resource type="Script" uid="uid://cbagm0x0fh885" path="res://Scripts/Items/item_instance.gd" id="1_btogu"]
+[ext_resource type="Script" uid="uid://da1qr7fi8njie" path="res://Scripts/Items/item_movement.gd" id="2_u06aw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btogu"]
+atlas = ExtResource("1_76mu4")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnst4"]
+atlas = ExtResource("1_76mu4")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_renmp"]
+atlas = ExtResource("1_76mu4")
+region = Rect2(256, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66iod"]
+atlas = ExtResource("1_76mu4")
+region = Rect2(352, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jmixh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btogu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnst4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_renmp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66iod")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="ItemInstance" type="Node2D"]
+script = ExtResource("1_btogu")
+
+[node name="Animation" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_jmixh")
+autoplay = "default"
+frame_progress = 0.9493144
+
+[node name="ItemMovement" type="Node2D" parent="."]
+script = ExtResource("2_u06aw")
+
+[connection signal="item_reached_player" from="ItemMovement" to="." method="_on_item_reached_player"]

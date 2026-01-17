@@ -1,0 +1,328 @@
+[gd_scene load_steps=44 format=3 uid="uid://ea7s0ysqsywk"]
+
+[ext_resource type="Script" uid="uid://bahtdew15aoqh" path="res://Scripts/Test/test.gd" id="1_4tmcs"]
+[ext_resource type="Script" uid="uid://c3d4hcxyeaaw0" path="res://Scripts/Generation/Resuources/tile_generation_settings.gd" id="2_5byit"]
+[ext_resource type="Resource" uid="uid://jd1heltr885f" path="res://Resources/WorldMapGeneration/Zones/ore_zone.tres" id="3_nwb1n"]
+[ext_resource type="Script" uid="uid://d0h7jpn8ciyon" path="res://Scripts/Map/map.gd" id="4_vvod0"]
+[ext_resource type="Texture2D" uid="uid://dcnvx84cmg8kp" path="res://Assets/Sprites/TileMap/TileMap MinerWorld-surface.png" id="5_2qa8c"]
+[ext_resource type="Texture2D" uid="uid://dgdb66nocj27p" path="res://Assets/Sprites/TileMap/TileMap MinerWorld-Ores.png" id="6_wv8kf"]
+[ext_resource type="Texture2D" uid="uid://cnjddybtulhwe" path="res://Assets/Sprites/TileMap/TileMap MinerWorld-OresSimplify.png" id="7_yg60m"]
+[ext_resource type="Script" uid="uid://dih57updbo1v5" path="res://Scripts/Generation/map_generation.gd" id="8_0f0p0"]
+[ext_resource type="Resource" uid="uid://dyoqjook6200s" path="res://Resources/WorldMapGeneration/World/stone.tres" id="9_bnr3i"]
+[ext_resource type="Resource" uid="uid://dtepdb8oc5evj" path="res://Resources/WorldMapGeneration/World/grass.tres" id="10_4uibj"]
+[ext_resource type="Resource" uid="uid://der4jbflfpj2q" path="res://Resources/WorldMapGeneration/World/sand.tres" id="11_ru7vv"]
+[ext_resource type="Resource" uid="uid://cs3872k45nb8l" path="res://Resources/WorldMapGeneration/World/water_light.tres" id="12_lx6aq"]
+[ext_resource type="Resource" uid="uid://ca6oimgy5os3n" path="res://Resources/WorldMapGeneration/World/water.tres" id="13_h6dlf"]
+[ext_resource type="Resource" uid="uid://dvsntvk1o25ck" path="res://Resources/WorldMapGeneration/Ore/random_ore.tres" id="14_2nqr4"]
+[ext_resource type="Resource" uid="uid://jh1lfiub5o6g" path="res://Resources/WorldMapGeneration/Ore/abyssal_ore.tres" id="15_r6223"]
+[ext_resource type="Resource" uid="uid://bfmh5ciodbkgj" path="res://Resources/WorldMapGeneration/Ore/gold_ore.tres" id="16_h18fh"]
+[ext_resource type="Resource" uid="uid://cc7f4cc53fcsg" path="res://Resources/WorldMapGeneration/Ore/iron_ore.tres" id="17_ncp7j"]
+[ext_resource type="Resource" uid="uid://x63r3qr2lji7" path="res://Resources/WorldMapGeneration/Ore/lead_ore.tres" id="18_lw73x"]
+[ext_resource type="Resource" uid="uid://ckehabc63jaut" path="res://Resources/WorldMapGeneration/Ore/copper_ore.tres" id="19_6cyd7"]
+[ext_resource type="Resource" uid="uid://b3yty2eb2bewd" path="res://Resources/WorldMapGeneration/Ore/hydrotite_ore.tres" id="20_otrf7"]
+[ext_resource type="Script" uid="uid://bpf03k0q4bkx2" path="res://Scripts/Player/spawn_point.gd" id="21_tepab"]
+[ext_resource type="Shader" uid="uid://cas81cm04lead" path="res://Shaders/substract.gdshader" id="22_ovfvw"]
+[ext_resource type="Texture2D" uid="uid://ddyr2y5b3nmpb" path="res://Assets/Sprites/Samples/Shapes/Circle-16.png" id="23_e5vks"]
+[ext_resource type="Texture2D" uid="uid://dmk8agqt66f" path="res://Assets/Sprites/Samples/Shapes/Circle-128.png" id="24_jhr5c"]
+[ext_resource type="FontFile" uid="uid://dllb2tfvteo8k" path="res://Assets/Fonts/Samples/Unicode/Unifontexmono-lxY45.ttf" id="25_3upwq"]
+[ext_resource type="Script" uid="uid://c4n35drsehovb" path="res://Scripts/pan_camera.gd" id="26_3g3tj"]
+[ext_resource type="Script" uid="uid://brv5vnh45t6im" path="res://Scripts/UI/main_ui.gd" id="27_fncpd"]
+[ext_resource type="Script" uid="uid://bui5fattenbp6" path="res://Scripts/UI/change_scene_button.gd" id="28_m3lo2"]
+[ext_resource type="Script" uid="uid://dog45d2m31ml7" path="res://Scripts/UI/game_timer_ui.gd" id="29_l6s6s"]
+[ext_resource type="Texture2D" uid="uid://twlw6r7rmdko" path="res://Assets/Sprites/Samples/Shapes/WhitePixel.png" id="30_p4sk1"]
+[ext_resource type="Script" uid="uid://bt8kdpt1tqjs5" path="res://Scripts/UI/spawning_ui.gd" id="31_m2mty"]
+[ext_resource type="PackedScene" uid="uid://cm47n2ygataib" path="res://Scenes/UI/transition.tscn" id="32_el3xw"]
+[ext_resource type="Script" uid="uid://bcboey7x83qke" path="res://Scripts/UI/player_stats_visualizer.gd" id="33_c34pj"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ee4r6"]
+texture = ExtResource("5_2qa8c")
+0:0/0 = 0
+0:0/0/custom_data_0 = 100.0
+1:0/0 = 0
+1:0/0/custom_data_0 = 0.4
+2:0/0 = 0
+2:0/0/custom_data_0 = 0.5
+3:0/0 = 0
+3:0/0/custom_data_0 = 0.9
+4:0/0 = 0
+4:0/0/custom_data_0 = 2.0
+6:0/0 = 0
+6:0/0/custom_data_0 = 1.0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/custom_data_0 = 1.0
+2:1/0 = 0
+2:1/0/custom_data_0 = 1.0
+3:1/0 = 0
+3:1/0/custom_data_0 = 1.0
+4:1/0 = 0
+4:1/0/custom_data_0 = 0.3
+5:1/0 = 0
+5:1/0/custom_data_0 = 0.3
+6:1/0 = 0
+6:1/0/custom_data_0 = 0.3
+0:2/0 = 0
+0:2/0/custom_data_0 = 0.3
+1:2/0 = 0
+1:2/0/custom_data_0 = 1.0
+2:2/0 = 0
+2:2/0/custom_data_0 = 0.3
+5:0/0 = 0
+5:0/0/custom_data_0 = 1.0
+
+[sub_resource type="TileSet" id="TileSet_6bp64"]
+uv_clipping = true
+physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "move_speed_factor"
+custom_data_layer_0/type = 3
+sources/0 = SubResource("TileSetAtlasSource_ee4r6")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gt3je"]
+texture = ExtResource("6_wv8kf")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_3pmx8"]
+uv_clipping = true
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_gt3je")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u50mg"]
+texture = ExtResource("7_yg60m")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_cbgmd"]
+uv_clipping = true
+sources/0 = SubResource("TileSetAtlasSource_u50mg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1w6v2"]
+shader = ExtResource("22_ovfvw")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/mask_texture = ExtResource("23_e5vks")
+
+[sub_resource type="LabelSettings" id="LabelSettings_3pmx8"]
+font = ExtResource("25_3upwq")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_6vcvc"]
+font = ExtResource("25_3upwq")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_cbgmd"]
+font = ExtResource("25_3upwq")
+font_size = 32
+
+[node name="Mine" type="Node2D"]
+
+[node name="Test" type="Node" parent="."]
+script = ExtResource("1_4tmcs")
+other_tiles = Array[ExtResource("2_5byit")]([ExtResource("3_nwb1n")])
+
+[node name="Map" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_vvod0")
+
+[node name="WorldMap" type="TileMapLayer" parent="Map"]
+unique_name_in_owner = true
+texture_filter = 3
+tile_set = SubResource("TileSet_6bp64")
+
+[node name="OreMap" type="TileMapLayer" parent="Map"]
+unique_name_in_owner = true
+texture_filter = 3
+tile_set = SubResource("TileSet_3pmx8")
+
+[node name="SimpleOreMap" type="TileMapLayer" parent="Map"]
+unique_name_in_owner = true
+texture_filter = 3
+tile_set = SubResource("TileSet_cbgmd")
+
+[node name="MapGeneration" type="Node2D" parent="."]
+script = ExtResource("8_0f0p0")
+world_generation = Array[ExtResource("2_5byit")]([ExtResource("9_bnr3i"), ExtResource("10_4uibj"), ExtResource("11_ru7vv"), ExtResource("12_lx6aq"), ExtResource("13_h6dlf")])
+ores_generation = Array[ExtResource("2_5byit")]([ExtResource("14_2nqr4"), ExtResource("15_r6223"), ExtResource("16_h18fh"), ExtResource("17_ncp7j"), ExtResource("18_lw73x"), ExtResource("19_6cyd7"), ExtResource("20_otrf7")])
+
+[node name="SpawnPoint" type="Node2D" parent="."]
+position = Vector2(576, 320)
+script = ExtResource("21_tepab")
+
+[node name="TextureRect" type="TextureRect" parent="SpawnPoint"]
+texture_filter = 2
+material = SubResource("ShaderMaterial_1w6v2")
+offset_left = -17.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 17.0
+texture = ExtResource("24_jhr5c")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="SpawnPoint"]
+offset_left = -176.0
+offset_top = -96.0
+offset_right = 176.0
+offset_bottom = -32.0
+text = "SPAWN POINT"
+label_settings = SubResource("LabelSettings_3pmx8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainCamera" type="Camera2D" parent="."]
+position = Vector2(2304, 1296)
+zoom = Vector2(0.5, 0.5)
+limit_left = 16
+limit_top = 16
+limit_right = 4592
+limit_bottom = 2576
+script = ExtResource("26_3g3tj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainUI" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("27_fncpd")
+
+[node name="Stats" type="PanelContainer" parent="CanvasLayer/MainUI"]
+modulate = Color(1, 1, 1, 0.62352943)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 68.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainUI/Stats"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="PlayerTool" type="Label" parent="CanvasLayer/MainUI/Stats/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "123Qw4E rT5y6"
+label_settings = SubResource("LabelSettings_6vcvc")
+
+[node name="PlayerInventory" type="Label" parent="CanvasLayer/MainUI/Stats/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "123Qw4E rT5y6"
+label_settings = SubResource("LabelSettings_6vcvc")
+autowrap_mode = 1
+
+[node name="ChangeSceneButton" type="Button" parent="CanvasLayer/MainUI/Stats/VBoxContainer" node_paths=PackedStringArray("transition")]
+layout_mode = 2
+text = "To Smeltery"
+script = ExtResource("28_m3lo2")
+transition = NodePath("../../../../Transition")
+to_scene = "uid://brfl2a5vcnwr6"
+
+[node name="GameTimer" type="VBoxContainer" parent="CanvasLayer/MainUI"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -36.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("29_l6s6s")
+
+[node name="Label" type="Label" parent="CanvasLayer/MainUI/GameTimer"]
+layout_mode = 2
+text = "5:00.00"
+horizontal_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/MainUI/GameTimer"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.0
+value = 1.0
+fill_mode = 6
+nine_patch_stretch = true
+texture_progress = ExtResource("30_p4sk1")
+
+[node name="GameTimer" type="Timer" parent="CanvasLayer/MainUI/GameTimer"]
+wait_time = 120.0
+one_shot = true
+
+[node name="SpawningUI" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("31_m2mty")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/SpawningUI"]
+modulate = Color(1, 1, 1, 0.6039216)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 67.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/SpawningUI/PanelContainer"]
+layout_mode = 2
+text = "Click to spawn!
+(offer to spawn near brown tiles)"
+label_settings = SubResource("LabelSettings_cbgmd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Transition" parent="CanvasLayer" node_paths=PackedStringArray("canvas_layer") instance=ExtResource("32_el3xw")]
+visible = false
+canvas_layer = NodePath("..")
+
+[node name="PlayerStatsVisualizer" type="Node" parent="."]
+script = ExtResource("33_c34pj")
+
+[connection signal="selected" from="SpawnPoint" to="Map" method="_on_spawn_point_selected"]
+[connection signal="selected" from="SpawnPoint" to="MainCamera" method="_on_spawn_point_selected"]
+[connection signal="selected" from="SpawnPoint" to="CanvasLayer/MainUI" method="_on_spawn_point_selected"]
+[connection signal="selected" from="SpawnPoint" to="CanvasLayer/MainUI/GameTimer" method="_on_spawn_point_selected"]
+[connection signal="selected" from="SpawnPoint" to="CanvasLayer/SpawningUI" method="_on_spawn_point_selected"]
+[connection signal="timeout" from="CanvasLayer/MainUI/GameTimer/GameTimer" to="CanvasLayer/MainUI/GameTimer" method="_on_game_timer_timeout"]

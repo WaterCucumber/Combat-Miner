@@ -1,0 +1,10 @@
+[gd_resource type="NoiseTexture2D" load_steps=3 format=3 uid="uid://b43tncq5q055v"]
+
+[ext_resource type="Gradient" uid="uid://cn4k63fkyuwoo" path="res://Resources/Menu/gradient0.tres" id="1_ailtf"]
+[ext_resource type="FastNoiseLite" uid="uid://xi3wnitv2hdr" path="res://Resources/Menu/menu_noise.tres" id="2_kef38"]
+
+[resource]
+width = 1920
+height = 1080
+noise = ExtResource("2_kef38")
+color_ramp = ExtResource("1_ailtf")

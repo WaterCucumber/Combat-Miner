@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="Ore" load_steps=8 format=3 uid="uid://bisea8clhcj3n"]
+
+[ext_resource type="Texture2D" uid="uid://dv0pttmrx8c3p" path="res://Assets/Sprites/Items/Items MinerWorld-Ores.png" id="1_xjmd2"]
+[ext_resource type="Script" uid="uid://dhksy0pt6560n" path="res://Scripts/Items/Resources/ore.gd" id="2_xjmd2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svawy"]
+atlas = ExtResource("1_xjmd2")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1lyp"]
+atlas = ExtResource("1_xjmd2")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odbny"]
+atlas = ExtResource("1_xjmd2")
+region = Rect2(256, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ai3qm"]
+atlas = ExtResource("1_xjmd2")
+region = Rect2(352, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7twtx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svawy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1lyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odbny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ai3qm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[resource]
+script = ExtResource("2_xjmd2")
+color = Color(0.2, 0.28235295, 0.5294118, 1)
+anim = SubResource("SpriteFrames_7twtx")
+name = "Hydrotite"
+metadata/_custom_type_script = "uid://boj23doieaxsi"

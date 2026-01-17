@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Ore" load_steps=5 format=3 uid="uid://bmrakup0n3v8f"]
+
+[ext_resource type="Texture2D" uid="uid://dv0pttmrx8c3p" path="res://Assets/Sprites/Items/Items MinerWorld-Ores.png" id="1_83kx1"]
+[ext_resource type="Script" uid="uid://dhksy0pt6560n" path="res://Scripts/Items/Resources/ore.gd" id="2_83kx1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scaen"]
+atlas = ExtResource("1_83kx1")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u25g1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scaen")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_83kx1")
+color = Color(0.5137255, 0.4627451, 0.6117647, 1)
+anim = SubResource("SpriteFrames_u25g1")
+name = "Lead ore"
+metadata/_custom_type_script = "uid://boj23doieaxsi"

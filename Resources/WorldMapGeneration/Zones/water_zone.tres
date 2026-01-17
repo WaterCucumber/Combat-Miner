@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TileGeneration" load_steps=3 format=3 uid="uid://crnps281d2sp7"]
+
+[ext_resource type="FastNoiseLite" uid="uid://bv7mk45agau41" path="res://Resources/WorldMapGeneration/noise.tres" id="1_cfgkw"]
+[ext_resource type="Script" uid="uid://c3d4hcxyeaaw0" path="res://Scripts/Generation/Resuources/tile_generation_settings.gd" id="2_fjjll"]
+
+[resource]
+script = ExtResource("2_fjjll")
+name = "Water Zone"
+atlas_pos = Vector2(0, 3)
+max_threshold = 0.12
+noise = ExtResource("1_cfgkw")
+min_value = -0.371
+max_value = 0.274
+metadata/_custom_type_script = "uid://c3d4hcxyeaaw0"

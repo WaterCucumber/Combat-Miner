@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="OreGenerationSettings" load_steps=10 format=3 uid="uid://ckehabc63jaut"]
+
+[ext_resource type="Script" uid="uid://c3d4hcxyeaaw0" path="res://Scripts/Generation/Resuources/tile_generation_settings.gd" id="1_3jqvb"]
+[ext_resource type="Script" uid="uid://b67avnkl15xcb" path="res://Scripts/Generation/Resuources/Ore/ore_drop_table.gd" id="1_n1d12"]
+[ext_resource type="Script" uid="uid://boj23doieaxsi" path="res://Scripts/Items/Resources/item.gd" id="2_3jqvb"]
+[ext_resource type="Script" uid="uid://bhikixwx8pati" path="res://Scripts/Generation/Resuources/Ore/ore_generation_settings.gd" id="2_ahb82"]
+[ext_resource type="Resource" uid="uid://dqbrviiybquh5" path="res://Resources/Items/Ores/copper_ore.tres" id="3_ahb82"]
+[ext_resource type="Script" uid="uid://obcvev52qwqo" path="res://Scripts/Generation/Resuources/Ore/ore_settings.gd" id="6_a46ro"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_d1ilt"]
+noise_type = 3
+frequency = 0.1997
+fractal_lacunarity = 2.84
+fractal_gain = 0.535
+
+[sub_resource type="Resource" id="Resource_qnjww"]
+script = ExtResource("1_n1d12")
+values = Dictionary[ExtResource("2_3jqvb"), float]({
+ExtResource("3_ahb82"): 1.0
+})
+metadata/_custom_type_script = "uid://b67avnkl15xcb"
+
+[sub_resource type="Resource" id="Resource_trrqk"]
+script = ExtResource("6_a46ro")
+health = 2
+containing_ores = SubResource("Resource_qnjww")
+metadata/_custom_type_script = "uid://obcvev52qwqo"
+
+[resource]
+script = ExtResource("2_ahb82")
+settings = SubResource("Resource_trrqk")
+placeable_tiles = PackedVector2Array(5, 0)
+name = "Copper ore"
+atlas_pos = Vector2(0, 1)
+min_threshold = 0.2
+max_threshold = 0.4
+noise = SubResource("FastNoiseLite_d1ilt")
+min_value = -0.578
+max_value = 0.588
+metadata/_custom_type_script = "uid://c3d4hcxyeaaw0"

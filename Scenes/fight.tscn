@@ -1,0 +1,311 @@
+[gd_scene load_steps=39 format=3 uid="uid://qxwr82cfqo7y"]
+
+[ext_resource type="Script" uid="uid://d0h7jpn8ciyon" path="res://Scripts/Map/map.gd" id="1_bgrs5"]
+[ext_resource type="PackedScene" uid="uid://buwxk844bodqw" path="res://Scenes/UI/moving_texture.tscn" id="1_bq00v"]
+[ext_resource type="PackedScene" uid="uid://cm47n2ygataib" path="res://Scenes/UI/transition.tscn" id="1_tnsjp"]
+[ext_resource type="Texture2D" uid="uid://dcnvx84cmg8kp" path="res://Assets/Sprites/TileMap/TileMap MinerWorld-surface.png" id="2_k0v31"]
+[ext_resource type="Shader" uid="uid://4frdqgprkt7o" path="res://Shaders/noise_background.gdshader" id="2_vvs45"]
+[ext_resource type="Texture2D" uid="uid://dgdb66nocj27p" path="res://Assets/Sprites/TileMap/TileMap MinerWorld-Ores.png" id="3_etm4k"]
+[ext_resource type="Script" uid="uid://ciffcfnvh6rjd" path="res://Scripts/Player/player_controller.gd" id="3_l8cav"]
+[ext_resource type="FastNoiseLite" uid="uid://xi3wnitv2hdr" path="res://Resources/Menu/menu_noise.tres" id="4_b1d61"]
+[ext_resource type="Texture2D" uid="uid://cnjddybtulhwe" path="res://Assets/Sprites/TileMap/TileMap MinerWorld-OresSimplify.png" id="4_uaijm"]
+[ext_resource type="Script" uid="uid://dih57updbo1v5" path="res://Scripts/Generation/map_generation.gd" id="5_b1qpm"]
+[ext_resource type="Script" uid="uid://c3d4hcxyeaaw0" path="res://Scripts/Generation/Resuources/tile_generation_settings.gd" id="6_x3o65"]
+[ext_resource type="FastNoiseLite" uid="uid://bv7mk45agau41" path="res://Resources/WorldMapGeneration/noise.tres" id="10_iin7n"]
+[ext_resource type="Script" uid="uid://dcp5jxvw3sxrq" path="res://Scripts/Generation/path_generator.gd" id="13_b1d61"]
+[ext_resource type="Texture2D" uid="uid://psum5a67fykm" path="res://Assets/Sprites/Enemies/Slime Animation.png" id="14_iin7n"]
+
+[sub_resource type="Gradient" id="Gradient_osq2n"]
+metadata/_snap_enabled = true
+metadata/_snap_count = 5
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iin7n"]
+width = 1920
+height = 1080
+noise = ExtResource("4_b1d61")
+color_ramp = SubResource("Gradient_osq2n")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qsl88"]
+shader = ExtResource("2_vvs45")
+shader_parameter/noise = SubResource("NoiseTexture2D_iin7n")
+shader_parameter/offset_x = 0.0
+shader_parameter/offset_y = 0.0
+shader_parameter/scale = 0.0499999988824
+shader_parameter/amount_x = 1000
+shader_parameter/amount_y = 1000
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f1m3e"]
+texture = ExtResource("2_k0v31")
+0:0/0 = 0
+0:0/0/custom_data_0 = 100.0
+1:0/0 = 0
+1:0/0/custom_data_0 = 0.7
+2:0/0 = 0
+2:0/0/custom_data_0 = 0.85
+3:0/0 = 0
+3:0/0/custom_data_0 = 0.9
+4:0/0 = 0
+4:0/0/custom_data_0 = 1.0
+6:0/0 = 0
+6:0/0/custom_data_0 = 1.0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/custom_data_0 = 1.0
+2:1/0 = 0
+2:1/0/custom_data_0 = 1.0
+3:1/0 = 0
+3:1/0/custom_data_0 = 1.0
+4:1/0 = 0
+4:1/0/custom_data_0 = 0.3
+5:1/0 = 0
+5:1/0/custom_data_0 = 0.3
+6:1/0 = 0
+6:1/0/custom_data_0 = 0.3
+0:2/0 = 0
+0:2/0/custom_data_0 = 0.3
+1:2/0 = 0
+1:2/0/custom_data_0 = 1.0
+2:2/0 = 0
+2:2/0/custom_data_0 = 0.3
+5:0/0 = 0
+5:0/0/custom_data_0 = 0.95
+
+[sub_resource type="TileSet" id="TileSet_1mhqg"]
+uv_clipping = true
+physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "move_speed_factor"
+custom_data_layer_0/type = 3
+sources/0 = SubResource("TileSetAtlasSource_f1m3e")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vc7yv"]
+texture = ExtResource("3_etm4k")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_3j1g4"]
+uv_clipping = true
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_vc7yv")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hqdwo"]
+texture = ExtResource("4_uaijm")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_5648d"]
+uv_clipping = true
+sources/0 = SubResource("TileSetAtlasSource_hqdwo")
+
+[sub_resource type="Resource" id="Resource_bgrs5"]
+script = ExtResource("6_x3o65")
+name = "Stone"
+atlas_pos = Vector2(5, 0)
+min_threshold = 0.7
+noise = ExtResource("10_iin7n")
+min_value = -0.426
+max_value = 0.338
+metadata/_custom_type_script = "uid://c3d4hcxyeaaw0"
+
+[sub_resource type="Resource" id="Resource_k0v31"]
+script = ExtResource("6_x3o65")
+name = "Grass"
+atlas_pos = Vector2(4, 0)
+min_threshold = 0.4
+max_threshold = 0.7
+noise = ExtResource("10_iin7n")
+min_value = -0.426
+max_value = 0.338
+metadata/_custom_type_script = "uid://c3d4hcxyeaaw0"
+
+[sub_resource type="Resource" id="Resource_osq2n"]
+script = ExtResource("6_x3o65")
+name = "Sand"
+atlas_pos = Vector2(3, 0)
+min_threshold = 0.3
+max_threshold = 0.4
+noise = ExtResource("10_iin7n")
+min_value = -0.426
+max_value = 0.338
+metadata/_custom_type_script = "uid://c3d4hcxyeaaw0"
+
+[sub_resource type="Resource" id="Resource_kla5h"]
+script = ExtResource("6_x3o65")
+name = "Light Water"
+atlas_pos = Vector2(2, 0)
+min_threshold = 0.25
+max_threshold = 0.3
+noise = ExtResource("10_iin7n")
+min_value = -0.426
+max_value = 0.338
+metadata/_custom_type_script = "uid://c3d4hcxyeaaw0"
+
+[sub_resource type="Resource" id="Resource_b1d61"]
+script = ExtResource("6_x3o65")
+name = "Water"
+atlas_pos = Vector2(1, 0)
+min_threshold = -0.001
+max_threshold = 0.25
+noise = ExtResource("10_iin7n")
+min_value = -0.426
+max_value = 0.338
+metadata/_custom_type_script = "uid://c3d4hcxyeaaw0"
+
+[sub_resource type="Curve2D" id="Curve2D_bgrs5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0v31"]
+atlas = ExtResource("14_iin7n")
+region = Rect2(0, 21, 13, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etm4k"]
+atlas = ExtResource("14_iin7n")
+region = Rect2(13, 21, 13, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uaijm"]
+atlas = ExtResource("14_iin7n")
+region = Rect2(26, 21, 13, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1qpm"]
+atlas = ExtResource("14_iin7n")
+region = Rect2(39, 21, 13, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3o65"]
+atlas = ExtResource("14_iin7n")
+region = Rect2(52, 21, 13, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ie2cm"]
+atlas = ExtResource("14_iin7n")
+region = Rect2(65, 21, 13, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snmxj"]
+atlas = ExtResource("14_iin7n")
+region = Rect2(78, 21, 13, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jllt1"]
+atlas = ExtResource("14_iin7n")
+region = Rect2(91, 21, 13, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_balwp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0v31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etm4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uaijm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1qpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3o65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ie2cm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snmxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jllt1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Fight" type="Node2D"]
+
+[node name="MovingTexture" parent="." instance=ExtResource("1_bq00v")]
+z_index = -1
+material = SubResource("ShaderMaterial_qsl88")
+offset_right = 576.0
+offset_bottom = 324.0
+color = Color(1, 1, 1, 0.5019608)
+
+[node name="Map" type="Node2D" parent="."]
+unique_name_in_owner = true
+z_index = -1
+script = ExtResource("1_bgrs5")
+size = Vector2(576, 324)
+
+[node name="WorldMap" type="TileMapLayer" parent="Map"]
+unique_name_in_owner = true
+z_index = -1
+texture_filter = 3
+tile_set = SubResource("TileSet_1mhqg")
+
+[node name="OreMap" type="TileMapLayer" parent="Map"]
+unique_name_in_owner = true
+z_index = -1
+texture_filter = 3
+tile_set = SubResource("TileSet_3j1g4")
+
+[node name="SimpleOreMap" type="TileMapLayer" parent="Map"]
+unique_name_in_owner = true
+z_index = -1
+texture_filter = 3
+tile_set = SubResource("TileSet_5648d")
+
+[node name="MapGeneration" type="Node2D" parent="."]
+script = ExtResource("5_b1qpm")
+world_generation = Array[ExtResource("6_x3o65")]([SubResource("Resource_bgrs5"), SubResource("Resource_k0v31"), SubResource("Resource_osq2n"), SubResource("Resource_kla5h"), SubResource("Resource_b1d61")])
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(270, 158)
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 576
+limit_bottom = 324
+
+[node name="PlayerController" type="Node" parent="."]
+script = ExtResource("3_l8cav")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Transition" parent="CanvasLayer" node_paths=PackedStringArray("canvas_layer") instance=ExtResource("1_tnsjp")]
+visible = false
+canvas_layer = NodePath("..")
+
+[node name="PathGenerator" type="Node2D" parent="."]
+script = ExtResource("13_b1d61")
+
+[node name="Path2D" type="Path2D" parent="PathGenerator"]
+curve = SubResource("Curve2D_bgrs5")
+
+[node name="Enemy" type="PathFollow2D" parent="PathGenerator/Path2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PathGenerator/Path2D/Enemy"]
+sprite_frames = SubResource("SpriteFrames_balwp")
+offset = Vector2(0, -5.16)

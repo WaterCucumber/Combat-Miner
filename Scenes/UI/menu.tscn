@@ -1,0 +1,369 @@
+[gd_scene load_steps=14 format=3 uid="uid://b178rnq25hlc6"]
+
+[ext_resource type="Script" uid="uid://c1ab1wwvs8820" path="res://Scripts/UI/menu.gd" id="1_wbdvm"]
+[ext_resource type="PackedScene" uid="uid://buwxk844bodqw" path="res://Scenes/UI/moving_texture.tscn" id="1_wwsa2"]
+[ext_resource type="Shader" uid="uid://n7jj3rfk2djr" path="res://Shaders/blur.gdshader" id="2_jsrd8"]
+[ext_resource type="FontFile" uid="uid://dllb2tfvteo8k" path="res://Assets/Fonts/Samples/Unicode/Unifontexmono-lxY45.ttf" id="3_wwsa2"]
+[ext_resource type="Script" uid="uid://bs7b7sghviskc" path="res://Scripts/UI/exit_button.gd" id="4_158mb"]
+[ext_resource type="Script" uid="uid://g0o5puw1utug" path="res://Scripts/UI/toggle_button.gd" id="4_jsrd8"]
+[ext_resource type="Script" uid="uid://ddu6lcewn0kan" path="res://Scripts/UI/generate_button.gd" id="5_wwsa2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wbdvm"]
+shader = ExtResource("2_jsrd8")
+shader_parameter/lod = 0.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_wbdvm"]
+font = ExtResource("3_wwsa2")
+font_size = 64
+
+[sub_resource type="Animation" id="Animation_6swd7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/PanelContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/MovingTexture/Blur:material:shader_parameter/lod")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:mouse_filter")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect/Controls:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect/BG:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_q3rjx"]
+resource_name = "from_load"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/PanelContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/MovingTexture/Blur:material:shader_parameter/lod")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:mouse_filter")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect/Controls:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect/BG:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1, 1.3, 1.7, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"change_theme"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_7qvly"]
+resource_name = "to_scene"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/PanelContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/MovingTexture/Blur:material:shader_parameter/lod")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:mouse_filter")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect/Controls:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rfqti"]
+_data = {
+&"RESET": SubResource("Animation_6swd7"),
+&"from_load": SubResource("Animation_q3rjx"),
+&"to_scene": SubResource("Animation_7qvly")
+}
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wbdvm")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MovingTexture" parent="ColorRect" instance=ExtResource("1_wwsa2")]
+layout_mode = 1
+
+[node name="Blur" type="ColorRect" parent="ColorRect/MovingTexture"]
+material = SubResource("ShaderMaterial_wbdvm")
+layout_mode = 0
+offset_left = 334.0
+offset_right = 818.0
+offset_bottom = 648.0
+
+[node name="BG" type="ColorRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="PanelContainer" type="PanelContainer" parent="ColorRect"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -224.0
+offset_top = 33.0
+offset_right = 224.0
+offset_bottom = 97.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="ColorRect/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "MapGeneration!"
+label_settings = SubResource("LabelSettings_wbdvm")
+horizontal_alignment = 1
+
+[node name="Controls" type="Control" parent="ColorRect"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Menu" type="VBoxContainer" parent="ColorRect/Controls"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -224.0
+offset_top = 8.0
+offset_right = 224.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="StartGame" type="Button" parent="ColorRect/Controls/Menu" node_paths=PackedStringArray("to_toggle")]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wwsa2")
+theme_override_font_sizes/font_size = 32
+text = "Start Game"
+script = ExtResource("4_jsrd8")
+to_toggle = [NodePath(".."), NodePath("../../Generation")]
+
+[node name="Exit" type="Button" parent="ColorRect/Controls/Menu" node_paths=PackedStringArray("menu")]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wwsa2")
+theme_override_font_sizes/font_size = 32
+text = "Exit"
+script = ExtResource("4_158mb")
+menu = NodePath("../../../..")
+
+[node name="Generation" type="VBoxContainer" parent="ColorRect/Controls"]
+visible = false
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -224.0
+offset_top = 8.0
+offset_right = 224.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="ColorRect/Controls/Generation"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wwsa2")
+placeholder_text = "Seed"
+
+[node name="Generate" type="Button" parent="ColorRect/Controls/Generation" node_paths=PackedStringArray("menu")]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wwsa2")
+theme_override_font_sizes/font_size = 32
+text = "Generate!"
+script = ExtResource("5_wwsa2")
+menu = NodePath("../../../..")
+
+[node name="Back" type="Button" parent="ColorRect/Controls/Generation" node_paths=PackedStringArray("to_toggle")]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wwsa2")
+theme_override_font_sizes/font_size = 32
+text = "Back"
+script = ExtResource("4_jsrd8")
+to_toggle = [NodePath("../../Menu"), NodePath("..")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_rfqti")
+}
+speed_scale = 2.0
+
+[connection signal="text_changed" from="ColorRect/Controls/Generation/LineEdit" to="ColorRect/Controls/Generation/Generate" method="_on_line_edit_text_changed"]

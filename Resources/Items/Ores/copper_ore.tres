@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Ore" load_steps=5 format=3 uid="uid://dqbrviiybquh5"]
+
+[ext_resource type="Texture2D" uid="uid://dv0pttmrx8c3p" path="res://Assets/Sprites/Items/Items MinerWorld-Ores.png" id="1_tuab5"]
+[ext_resource type="Script" uid="uid://dhksy0pt6560n" path="res://Scripts/Items/Resources/ore.gd" id="2_tuab5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3gwt"]
+atlas = ExtResource("1_tuab5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_66m3l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3gwt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_tuab5")
+color = Color(0.67058825, 0.32156864, 0.21176471, 1)
+anim = SubResource("SpriteFrames_66m3l")
+name = "Copper ore"
+metadata/_custom_type_script = "uid://boj23doieaxsi"

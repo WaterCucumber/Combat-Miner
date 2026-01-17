@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="OreGenerationSettings" load_steps=13 format=3 uid="uid://dvsntvk1o25ck"]
+
+[ext_resource type="Script" uid="uid://b67avnkl15xcb" path="res://Scripts/Generation/Resuources/Ore/ore_drop_table.gd" id="1_4xwha"]
+[ext_resource type="Script" uid="uid://c3d4hcxyeaaw0" path="res://Scripts/Generation/Resuources/tile_generation_settings.gd" id="1_pxf1e"]
+[ext_resource type="Script" uid="uid://bhikixwx8pati" path="res://Scripts/Generation/Resuources/Ore/ore_generation_settings.gd" id="2_nbs1d"]
+[ext_resource type="Script" uid="uid://boj23doieaxsi" path="res://Scripts/Items/Resources/item.gd" id="3_ffu6s"]
+[ext_resource type="Resource" uid="uid://dqbrviiybquh5" path="res://Resources/Items/Ores/copper_ore.tres" id="3_pxf1e"]
+[ext_resource type="Resource" uid="uid://bmrakup0n3v8f" path="res://Resources/Items/Ores/lead_ore.tres" id="4_pxf1e"]
+[ext_resource type="Resource" uid="uid://qxpoadwsfou3" path="res://Resources/Items/Ores/iron_ore.tres" id="5_nbs1d"]
+[ext_resource type="Resource" uid="uid://cu7h2348t7w41" path="res://Resources/Items/Ores/gold_ore.tres" id="6_ygf2q"]
+[ext_resource type="Script" uid="uid://obcvev52qwqo" path="res://Scripts/Generation/Resuources/Ore/ore_settings.gd" id="9_ygf2q"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7gese"]
+noise_type = 2
+seed = 5
+frequency = 0.0279
+fractal_gain = 0.525
+domain_warp_amplitude = 1.0
+domain_warp_fractal_type = 0
+domain_warp_fractal_octaves = 1
+domain_warp_fractal_lacunarity = 8.48
+domain_warp_fractal_gain = 6.95
+
+[sub_resource type="Resource" id="Resource_02dxe"]
+script = ExtResource("1_4xwha")
+values = Dictionary[ExtResource("3_ffu6s"), float]({
+ExtResource("3_pxf1e"): 0.33,
+ExtResource("4_pxf1e"): 0.34,
+ExtResource("5_nbs1d"): 0.23,
+ExtResource("6_ygf2q"): 0.1
+})
+metadata/_custom_type_script = "uid://b67avnkl15xcb"
+
+[sub_resource type="Resource" id="Resource_bh4gr"]
+script = ExtResource("9_ygf2q")
+hardness = 2
+health = 3
+containing_ores = SubResource("Resource_02dxe")
+metadata/_custom_type_script = "uid://obcvev52qwqo"
+
+[resource]
+script = ExtResource("2_nbs1d")
+settings = SubResource("Resource_bh4gr")
+placeable_tiles = PackedVector2Array(5, 0)
+name = "Stone (random)"
+min_threshold = -0.001
+max_threshold = 0.424
+noise = SubResource("FastNoiseLite_7gese")
+min_value = -0.885
+max_value = -0.25
+metadata/_custom_type_script = "uid://c3d4hcxyeaaw0"

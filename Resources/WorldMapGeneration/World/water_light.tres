@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="TileGenerationSettings" load_steps=3 format=3 uid="uid://cs3872k45nb8l"]
+
+[ext_resource type="FastNoiseLite" uid="uid://bv7mk45agau41" path="res://Resources/WorldMapGeneration/noise.tres" id="1_qq3td"]
+[ext_resource type="Script" uid="uid://c3d4hcxyeaaw0" path="res://Scripts/Generation/Resuources/tile_generation_settings.gd" id="2_2p37h"]
+
+[resource]
+script = ExtResource("2_2p37h")
+name = "Light Water"
+atlas_pos = Vector2(2, 0)
+min_threshold = 0.2
+max_threshold = 0.25
+noise = ExtResource("1_qq3td")
+min_value = -0.426
+max_value = 0.338
+metadata/_custom_type_script = "uid://c3d4hcxyeaaw0"

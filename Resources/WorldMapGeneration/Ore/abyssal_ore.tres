@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="OreGenerationSettings" load_steps=12 format=3 uid="uid://jh1lfiub5o6g"]
+
+[ext_resource type="Script" uid="uid://c3d4hcxyeaaw0" path="res://Scripts/Generation/Resuources/tile_generation_settings.gd" id="1_paq5a"]
+[ext_resource type="Script" uid="uid://b67avnkl15xcb" path="res://Scripts/Generation/Resuources/Ore/ore_drop_table.gd" id="1_sxpx8"]
+[ext_resource type="Script" uid="uid://boj23doieaxsi" path="res://Scripts/Items/Resources/item.gd" id="2_paq5a"]
+[ext_resource type="Script" uid="uid://bhikixwx8pati" path="res://Scripts/Generation/Resuources/Ore/ore_generation_settings.gd" id="2_r8tpw"]
+[ext_resource type="Resource" uid="uid://cu7h2348t7w41" path="res://Resources/Items/Ores/gold_ore.tres" id="4_88jr5"]
+[ext_resource type="Resource" uid="uid://qxpoadwsfou3" path="res://Resources/Items/Ores/iron_ore.tres" id="5_88jr5"]
+[ext_resource type="Resource" uid="uid://cvkq4f5eknkmy" path="res://Resources/Items/Ores/abyssal_ore.tres" id="5_nxbdk"]
+[ext_resource type="Script" uid="uid://obcvev52qwqo" path="res://Scripts/Generation/Resuources/Ore/ore_settings.gd" id="8_nxbdk"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_d1ilt"]
+noise_type = 3
+frequency = 0.1997
+fractal_lacunarity = 2.84
+fractal_gain = 0.535
+
+[sub_resource type="Resource" id="Resource_ba1h6"]
+script = ExtResource("1_sxpx8")
+values = Dictionary[ExtResource("2_paq5a"), float]({
+ExtResource("5_88jr5"): 0.5,
+ExtResource("4_88jr5"): 0.2,
+ExtResource("5_nxbdk"): 0.3
+})
+metadata/_custom_type_script = "uid://b67avnkl15xcb"
+
+[sub_resource type="Resource" id="Resource_0og76"]
+script = ExtResource("8_nxbdk")
+hardness = 4
+health = 20
+containing_ores = SubResource("Resource_ba1h6")
+metadata/_custom_type_script = "uid://obcvev52qwqo"
+
+[resource]
+script = ExtResource("2_r8tpw")
+settings = SubResource("Resource_0og76")
+placeable_tiles = PackedVector2Array(5, 0)
+name = "Abyssal ore"
+atlas_pos = Vector2(5, 1)
+min_threshold = 0.78
+max_threshold = 0.8
+noise = SubResource("FastNoiseLite_d1ilt")
+min_value = -0.578
+max_value = 0.588
+metadata/_custom_type_script = "uid://c3d4hcxyeaaw0"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="TileGenerationSettings" load_steps=3 format=3 uid="uid://dtepdb8oc5evj"]
+
+[ext_resource type="FastNoiseLite" uid="uid://bv7mk45agau41" path="res://Resources/WorldMapGeneration/noise.tres" id="1_r1k1o"]
+[ext_resource type="Script" uid="uid://c3d4hcxyeaaw0" path="res://Scripts/Generation/Resuources/tile_generation_settings.gd" id="2_ii8nc"]
+
+[resource]
+script = ExtResource("2_ii8nc")
+name = "Grass"
+atlas_pos = Vector2(4, 0)
+min_threshold = 0.3
+max_threshold = 0.5
+noise = ExtResource("1_r1k1o")
+min_value = -0.426
+max_value = 0.338
+metadata/_custom_type_script = "uid://c3d4hcxyeaaw0"

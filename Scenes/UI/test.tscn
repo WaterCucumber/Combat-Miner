@@ -1,0 +1,288 @@
+[gd_scene load_steps=33 format=3 uid="uid://b0j8mgtsfqrbo"]
+
+[ext_resource type="PackedScene" uid="uid://buwxk844bodqw" path="res://Scenes/UI/moving_texture.tscn" id="1_mqm0m"]
+[ext_resource type="Shader" uid="uid://4frdqgprkt7o" path="res://Shaders/noise_background.gdshader" id="2_m6rdh"]
+[ext_resource type="Gradient" uid="uid://beo6700hticvs" path="res://Resources/Menu/gradient1.tres" id="3_x3wks"]
+[ext_resource type="Shader" uid="uid://c5jd3kpjjvppm" path="res://Shaders/alloy_gradient.gdshader" id="4_8yfai"]
+[ext_resource type="Texture2D" uid="uid://bdcg7kp5sayfq" path="res://Resources/Items/Alloy/alloy_base.tres" id="5_h4euf"]
+[ext_resource type="Texture2D" uid="uid://ksi21v4ompqv" path="res://Assets/Sprites/Items/Alloy_0.png" id="6_3er3k"]
+[ext_resource type="PackedScene" uid="uid://cm47n2ygataib" path="res://Scenes/UI/transition.tscn" id="7_lk26u"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_i3aeo"]
+cellular_distance_function = 2
+domain_warp_amplitude = 8.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5wyu1"]
+width = 1920
+height = 1080
+noise = SubResource("FastNoiseLite_i3aeo")
+color_ramp = ExtResource("3_x3wks")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2cgwh"]
+shader = ExtResource("2_m6rdh")
+shader_parameter/noise = SubResource("NoiseTexture2D_5wyu1")
+shader_parameter/offset_x = 0.0
+shader_parameter/offset_y = 0.0
+shader_parameter/scale = 0.03999999910592
+shader_parameter/amount_x = 70
+shader_parameter/amount_y = 40
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q8sys"]
+shader = ExtResource("4_8yfai")
+shader_parameter/use_gradient = false
+shader_parameter/gradient2D = ExtResource("5_h4euf")
+shader_parameter/amount = 512.0
+shader_parameter/offset = 0.5
+
+[sub_resource type="Gradient" id="Gradient_qpfo2"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 0.6392157, 0, 1, 0.5137255, 0.4627451, 0.6117647, 1, 0.7607843, 0.7647059, 0.78039217, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yb21e"]
+gradient = SubResource("Gradient_qpfo2")
+width = 16
+height = 16
+fill_from = Vector2(0.5, 0.375)
+fill_to = Vector2(0.5, 0.625)
+repeat = 2
+metadata/_snap_enabled = true
+metadata/_snap_count = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aees8"]
+shader = ExtResource("4_8yfai")
+shader_parameter/use_gradient = false
+shader_parameter/gradient2D = SubResource("GradientTexture2D_yb21e")
+shader_parameter/amount = 16.0
+shader_parameter/offset = 0.5
+
+[sub_resource type="Gradient" id="Gradient_0c07c"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 0.6392157, 0, 1, 0.5137255, 0.4627451, 0.6117647, 1, 0.7607843, 0.7647059, 0.78039217, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2cgwh"]
+gradient = SubResource("Gradient_0c07c")
+width = 16
+height = 16
+fill_from = Vector2(0.625, 0.5)
+fill_to = Vector2(0.375, 0.5)
+repeat = 2
+metadata/_snap_enabled = true
+metadata/_snap_count = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iaow0"]
+shader = ExtResource("4_8yfai")
+shader_parameter/use_gradient = false
+shader_parameter/gradient2D = SubResource("GradientTexture2D_2cgwh")
+shader_parameter/amount = 16.0
+shader_parameter/offset = 0.5
+
+[sub_resource type="Gradient" id="Gradient_qc4db"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 0.6392157, 0, 1, 0.5137255, 0.4627451, 0.6117647, 1, 0.7607843, 0.7647059, 0.78039217, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ys1qc"]
+gradient = SubResource("Gradient_qc4db")
+width = 16
+height = 16
+fill_from = Vector2(0.75, 0.625)
+fill_to = Vector2(0.25, 0.375)
+repeat = 2
+metadata/_snap_enabled = true
+metadata/_snap_count = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_35xla"]
+shader = ExtResource("4_8yfai")
+shader_parameter/use_gradient = false
+shader_parameter/gradient2D = SubResource("GradientTexture2D_ys1qc")
+shader_parameter/amount = 16.0
+shader_parameter/offset = 0.5
+
+[sub_resource type="Gradient" id="Gradient_mie3u"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 0.6392157, 0, 1, 0.5137255, 0.4627451, 0.6117647, 1, 0.7607843, 0.7647059, 0.78039217, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0qy5o"]
+gradient = SubResource("Gradient_mie3u")
+width = 16
+height = 16
+fill_from = Vector2(0.25, 0.25)
+fill_to = Vector2(0.75, 0.75)
+repeat = 2
+metadata/_snap_enabled = true
+metadata/_snap_count = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7nf3m"]
+shader = ExtResource("4_8yfai")
+shader_parameter/use_gradient = false
+shader_parameter/gradient2D = SubResource("GradientTexture2D_0qy5o")
+shader_parameter/amount = 16.0
+shader_parameter/offset = 0.5
+
+[sub_resource type="Gradient" id="Gradient_i3aeo"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 0.6392157, 0, 1, 0.5137255, 0.4627451, 0.6117647, 1, 0.7607843, 0.7647059, 0.78039217, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5wyu1"]
+gradient = SubResource("Gradient_i3aeo")
+width = 16
+height = 16
+fill_from = Vector2(0.5, 0.25)
+fill_to = Vector2(0.5, 0.75)
+metadata/_snap_enabled = true
+metadata/_snap_count = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0c07c"]
+shader = ExtResource("4_8yfai")
+shader_parameter/use_gradient = false
+shader_parameter/gradient2D = SubResource("GradientTexture2D_5wyu1")
+shader_parameter/amount = 16.0
+shader_parameter/offset = 0.5
+
+[sub_resource type="Gradient" id="Gradient_2cgwh"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 0.6392157, 0, 1, 0.5137255, 0.4627451, 0.6117647, 1, 0.7607843, 0.7647059, 0.78039217, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_iaow0"]
+gradient = SubResource("Gradient_2cgwh")
+width = 16
+height = 16
+fill_from = Vector2(0.75, 0.5)
+fill_to = Vector2(0.25, 0.5)
+metadata/_snap_enabled = true
+metadata/_snap_count = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qpfo2"]
+shader = ExtResource("4_8yfai")
+shader_parameter/use_gradient = false
+shader_parameter/gradient2D = SubResource("GradientTexture2D_iaow0")
+shader_parameter/amount = 16.0
+shader_parameter/offset = 0.5
+
+[sub_resource type="Gradient" id="Gradient_yb21e"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 0.6392157, 0, 1, 0.5137255, 0.4627451, 0.6117647, 1, 0.7607843, 0.7647059, 0.78039217, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aees8"]
+gradient = SubResource("Gradient_yb21e")
+fill = 1
+fill_to = Vector2(0.25, 0.25)
+repeat = 2
+metadata/_snap_enabled = true
+metadata/_snap_count = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mie3u"]
+shader = ExtResource("4_8yfai")
+shader_parameter/use_gradient = true
+shader_parameter/gradient2D = SubResource("GradientTexture2D_aees8")
+shader_parameter/amount = 512.0
+shader_parameter/offset = 0.5
+
+[node name="Test" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MovingTexture" parent="." instance=ExtResource("1_mqm0m")]
+material = SubResource("ShaderMaterial_2cgwh")
+layout_mode = 1
+
+[node name="HBoxContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 39.0
+offset_top = -139.0
+offset_right = -39.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 4
+
+[node name="Diagonal" type="TextureRect" parent="HBoxContainer"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_q8sys")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("6_3er3k")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Horizontal" type="TextureRect" parent="HBoxContainer"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_aees8")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("6_3er3k")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Vertical" type="TextureRect" parent="HBoxContainer"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_iaow0")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("6_3er3k")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Misc" type="TextureRect" parent="HBoxContainer"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_35xla")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("6_3er3k")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Diagonal2" type="TextureRect" parent="HBoxContainer"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_7nf3m")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("6_3er3k")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Horizontal2" type="TextureRect" parent="HBoxContainer"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_0c07c")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("6_3er3k")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Vertical2" type="TextureRect" parent="HBoxContainer"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_qpfo2")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("6_3er3k")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Misc2" type="TextureRect" parent="HBoxContainer"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_mie3u")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("6_3er3k")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Transition" parent="." instance=ExtResource("7_lk26u")]
+visible = false
+layout_mode = 1

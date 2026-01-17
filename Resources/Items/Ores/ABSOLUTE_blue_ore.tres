@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="Ore" load_steps=8 format=3 uid="uid://w4qhi5xsgunx"]
+
+[ext_resource type="Texture2D" uid="uid://dv0pttmrx8c3p" path="res://Assets/Sprites/Items/Items MinerWorld-Ores.png" id="1_tbf7i"]
+[ext_resource type="Script" uid="uid://dhksy0pt6560n" path="res://Scripts/Items/Resources/ore.gd" id="2_tbf7i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbf7i"]
+atlas = ExtResource("1_tbf7i")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvkn6"]
+atlas = ExtResource("1_tbf7i")
+region = Rect2(128, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qjlu"]
+atlas = ExtResource("1_tbf7i")
+region = Rect2(224, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jr7np"]
+atlas = ExtResource("1_tbf7i")
+region = Rect2(320, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dg8u5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbf7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvkn6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qjlu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jr7np")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[resource]
+script = ExtResource("2_tbf7i")
+color = Color(0, 0, 1, 1)
+anim = SubResource("SpriteFrames_dg8u5")
+name = "ABSOLUTE blue ore"
+metadata/_custom_type_script = "uid://boj23doieaxsi"

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://buwxk844bodqw"]
+
+[ext_resource type="Shader" uid="uid://4frdqgprkt7o" path="res://Shaders/noise_background.gdshader" id="1_og7pd"]
+[ext_resource type="Texture2D" uid="uid://b43tncq5q055v" path="res://Resources/Menu/menu_noise_texture.tres" id="2_7xqn7"]
+[ext_resource type="Script" uid="uid://cxkbu6xlh5f0v" path="res://Scripts/UI/moving_texture.gd" id="3_whwsq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kmk0v"]
+shader = ExtResource("1_og7pd")
+shader_parameter/noise = ExtResource("2_7xqn7")
+shader_parameter/offset_x = 0.0
+shader_parameter/offset_y = 0.0
+shader_parameter/scale = 0.03999999910592
+shader_parameter/amount_x = 70
+shader_parameter/amount_y = 40
+
+[node name="MovingTexture" type="ColorRect"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_kmk0v")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_whwsq")

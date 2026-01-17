@@ -1,0 +1,343 @@
+[gd_scene load_steps=21 format=3 uid="uid://cr4xeewr3sdd6"]
+
+[ext_resource type="Script" uid="uid://b6wcxmwt6jbkn" path="res://Addons/Loading/Scripts/loading_screen.gd" id="1_pak5c"]
+[ext_resource type="Texture2D" uid="uid://mmepji38yd07" path="res://Addons/Loading/Assets/Sprites/WhitePixel.png" id="2_6itc5"]
+[ext_resource type="PackedScene" uid="uid://buwxk844bodqw" path="res://Scenes/UI/moving_texture.tscn" id="2_eyy1t"]
+[ext_resource type="Shader" uid="uid://n7jj3rfk2djr" path="res://Shaders/blur.gdshader" id="3_hnlwp"]
+[ext_resource type="Texture2D" uid="uid://dv0pttmrx8c3p" path="res://Assets/Sprites/Items/Items MinerWorld-Ores.png" id="5_gyfa5"]
+[ext_resource type="Script" uid="uid://kses1fax7mw" path="res://Scripts/UI/animated_texture_rect.gd" id="6_yd2jk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vnur0"]
+shader = ExtResource("3_hnlwp")
+shader_parameter/lod = 0.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_fayou"]
+color = Color(1, 1, 1, 1)
+thickness = 16
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nfm0g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fayou"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_1godw"]
+color = Color(1, 1, 1, 1)
+thickness = 16
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0a7u"]
+atlas = ExtResource("5_gyfa5")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejlen"]
+atlas = ExtResource("5_gyfa5")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7xaf"]
+atlas = ExtResource("5_gyfa5")
+region = Rect2(240, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glv15"]
+atlas = ExtResource("5_gyfa5")
+region = Rect2(336, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ufaok"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0a7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejlen")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7xaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glv15")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_yd2jk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Loading:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer2/MovingTexture/Blur:material:shader_parameter/lod")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer2/VBoxContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer2/AlmostReady:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ufaok"]
+resource_name = "load_scene"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer2/AlmostReady:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer2/VBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer2/MovingTexture/Blur:material:shader_parameter/lod")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Loading:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.49719122, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gyfa5"]
+resource_name = "set_up_screen"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Loading:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer2/MovingTexture/Blur:material:shader_parameter/lod")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer2/VBoxContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer2/AlmostReady:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ufaok"]
+_data = {
+&"RESET": SubResource("Animation_yd2jk"),
+&"load_scene": SubResource("Animation_ufaok"),
+&"set_up_screen": SubResource("Animation_gyfa5")
+}
+
+[node name="LoadingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pak5c")
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MovingTexture" parent="PanelContainer2" instance=ExtResource("2_eyy1t")]
+layout_mode = 2
+
+[node name="Blur" type="ColorRect" parent="PanelContainer2/MovingTexture"]
+material = SubResource("ShaderMaterial_vnur0")
+layout_mode = 0
+offset_top = 200.0
+offset_right = 1152.0
+offset_bottom = 448.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer2"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_fayou")
+
+[node name="TopProgressBar" type="TextureProgressBar" parent="PanelContainer2/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+value = 0.44
+nine_patch_stretch = true
+texture_progress = ExtResource("2_6itc5")
+
+[node name="LoadLabel" type="RichTextLabel" parent="PanelContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nfm0g")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fayou")
+bbcode_enabled = true
+text = "[b][font_size=64][shake]LOADING"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="ProgressLabel" type="RichTextLabel" parent="PanelContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "[font_size=32]10%/100%"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BottomProgressBar" type="TextureProgressBar" parent="PanelContainer2/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+value = 0.44
+fill_mode = 1
+nine_patch_stretch = true
+texture_progress = ExtResource("2_6itc5")
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_1godw")
+
+[node name="TipLabel" type="RichTextLabel" parent="PanelContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nfm0g")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fayou")
+bbcode_enabled = true
+text = "[font_size=16]Background image is colored noise texture"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="AlmostReady" type="RichTextLabel" parent="PanelContainer2"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "[font_size=64]Almost Ready!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Loading" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = SubResource("AtlasTexture_q0a7u")
+script = ExtResource("6_yd2jk")
+sprite_frames = SubResource("SpriteFrames_ufaok")
+metadata/_custom_type_script = "uid://kses1fax7mw"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ufaok")
+}
